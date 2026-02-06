@@ -6,32 +6,32 @@ export const getSalutations = (req, res) => {
     //console.log(parsedSalutations[1]);
 };
 
-export const getSalutationHasard = (req, res) => {
-    const { langue } = req.query;
+export const listePourLangue = (req, res) => {
+    const params = req.params;
 
-    if (!langue) {
-        const index = Math.floor(Math.random() * salutations.length);
-        res.json(salutations[index]);
+    if(!params.code_langue){
+        return res.status(400).json({
+            erreur: "le code de la langue est requis"
+        })
     }
 
-    if(langue != "fr" && langue != "en" && langue != "es" && langue != "de"){
-        return res.status(404).json({
-            erreur: `Aucune salutation pour la langue ${langue}`
+    if (params.code_langue != "fr" && params.code_langue != "en" && params.code_langue != "es" && params.code_langue != "de") {
+        return res.status(400).json({
+            erreur: `Code de langue invalide: ${params.code_langue}`
         });
     }
 
     else{
-        const languesAutorisees = langue.split(',');
+        const salutationsFiltrees = salutations.filter(includes(params.code_langue));
 
-        const salutationsFiltrees = salutations.filter(s =>
-        languesAutorisees.includes(s.code_langue));
+        if(!salutationsFiltrees){
+            return res.status(404).json({
+                erreur: "aucune salutation trouvée pour ce code de langue"
+            })
+        }
 
-        const index = Math.floor(Math.random() * salutationsFiltrees.length);
-        res.json(salutationsFiltrees[index]);
+        res.json(salutationsFiltrees);
     }
-
-    const index = Math.floor(Math.random() * salutationsFiltrees.length);
-    res.json(salutationsFiltrees[index]);
 };
 
 export const createSalutations = (req, res) => {

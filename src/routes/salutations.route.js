@@ -1,10 +1,10 @@
 import express from 'express';
-import {getSalutations, createSalutations, getSalutationHasard} from '../controllers/salutations.controller.js';
+import {getSalutations, createSalutations, listePourLangue} from '../controllers/salutations.controller.js';
 
 const salutationsRouter = express.Router();
 
-salutationsRouter.get('/hasard', (req, res) => {
-    res.json(getSalutationHasard(req, res));
+salutationsRouter.get('/api/salutations/liste_pour_langue/:code_langue', (req, res) => {
+    listePourLangue(req, res);
 });
 
 salutationsRouter.get('/liste', (req, res) => {

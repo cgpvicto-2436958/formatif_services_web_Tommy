@@ -1,0 +1,29 @@
+{
+  "name": "formatif_services_web_tommy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cgpvicto-2436958/formatif_services_web_Tommy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/cgpvicto-2436958/formatif_services_web_Tommy/issues"
+  },
+  "homepage": "https://github.com/cgpvicto-2436958/formatif_services_web_Tommy#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.4",
+    "express": "^5.2.1",
+    "mysql2": "^3.16.3"
+  }
+}
