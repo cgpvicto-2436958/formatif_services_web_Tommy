@@ -1,6 +1,9 @@
 // Importer le module express
 import express from 'express';
 import salutationsRouter from './src/routes/salutations.route.js';
+import dotenv from "dotenv";
+
+dotenv.config();
 
 // Créer une application express
 const app = express();
